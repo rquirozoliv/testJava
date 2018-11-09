@@ -1,0 +1,11 @@
+/*C1*/SET SCHEMA SYSTEM_LOBS
+INSERT INTO BLOCKS VALUES(0,2147483647,0)
+COMMIT
+/*C2*/SET SCHEMA PUBLIC
+create table phone (\u000a     id int,\u000a     number varchar(20) not null,\u000a     cityCode varchar(5) not null,\u000a     countryCode varchar(5) not null\u000a)
+drop table phone
+CREATE TABLE phone(\u000a id INT NOT NULL PRIMARY KEY,\u000a number VARCHAR(20) NOT NULL,\u000a cityCode VARCHAR(5) NOT NULL,\u000a countryCode VARCHAR(5) NOT NULL,\u000a)
+CREATE TABLE user(\u000a id INT NOT NULL PRIMARY KEY,\u000a email VARCHAR(60) NOT NULL,\u000a password VARCHAR(10) NOT NULL,\u000a name VARCHAR(70) NOT NULL,\u000a created DATETIME,\u000a modified DATETIME,\u000a last_login DATETIME,\u000a token VARCHAR(255) NOT NULL,\u000a phoneId INT\u000a)
+\u000a\u000adrop table user
+CREATE TABLE user(\u000a id INT NOT NULL PRIMARY KEY,\u000a email VARCHAR(60) NOT NULL,\u000a password VARCHAR(10) NOT NULL,\u000a name VARCHAR(70) NOT NULL,\u000a created DATETIME,\u000a modified DATETIME,\u000a last_login DATETIME,\u000a token VARCHAR(255) NOT NULL,\u000a phoneId INT FOREIGN KEY REFERENCES phone(id)\u000a)
+DISCONNECT
